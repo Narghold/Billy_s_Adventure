@@ -9,17 +9,20 @@ int backgroundMenu_x = 0;
 int backgroundMenu_y = -100;
 
 //Coordonnées Curseur
-int menuCurseur_x = 50;
-int menuCurseur_y = 50;
-
+int menuCurseur_x = 15;
+int menuCurseur_y;
+int menuCurseur_yplay= 555;
+int menuCurseur_ycommand = 605;
+int menuCurseur_yquit = 655;
+ 
 //Coordonnées Texte
-int menuPlay_x = 30;
+int menuPlay_x = 60;
 int menuPlay_y = 580;
 
-int menuCommand_x = 30;
+int menuCommand_x = 60;
 int menuCommand_y = 630;
 
-int menuQuit_x = 30;
+int menuQuit_x = 60;
 int menuQuit_y = 680;
 
 //Timer
@@ -31,6 +34,10 @@ int menu_frame = 0;
 boolean boutonPlay = true;
 boolean boutonCommand = false;
 boolean boutonQuit = false;
+
+//Variable curseur // 0 = Play | 1 = Command | 2 = Quit 
+
+int menu_choix; 
 
 ///////////////////////
 
@@ -57,9 +64,10 @@ void menu_update(){
   if(backgroundMenu_x == 0){
     menu_frame = 0;
   }
-  
   //Detection boutons
-  
+  if(menu_choix == 0) menuCurseur_y = menuCurseur_yplay;
+  if(menu_choix == 1) menuCurseur_y = menuCurseur_ycommand;
+  if(menu_choix == 2) menuCurseur_y = menuCurseur_yquit;
 }
 
 void menu_draw(){
