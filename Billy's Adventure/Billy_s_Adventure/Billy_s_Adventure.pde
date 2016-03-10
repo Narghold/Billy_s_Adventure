@@ -1,6 +1,6 @@
 //////VARIABLES/////////
 
-int menu_List = 0; // 0 = Menu | 1 = Level | 2 = Paramètres | 3 = Quit
+int menu_List = 0; // 0 = Menu | 1 = Play | 2 = Commands | 3 = Quit
 boolean touche = false;
 
 ///////////////////////
@@ -29,7 +29,7 @@ void draw(){
 }
 
 void keyPressed(){
-  if (keyCode == UP && menu_choix == 0 && touche == false && menu_List == 0)   menu_choix = 2;
+  if (keyCode == UP && menu_choix == 0 && touche == false && menu_List == 0)   menu_choix = 2;  //Variable curseur // 0 = Play | 1 = Command | 2 = Quit 
   else
   if (keyCode == DOWN && menu_choix == 0 && touche == false && menu_List == 0) menu_choix = 1;
   else
@@ -40,6 +40,14 @@ void keyPressed(){
   if (keyCode == UP && menu_choix == 2 && touche == false && menu_List == 0)   menu_choix = 1;
   else
   if (keyCode == DOWN && menu_choix == 2 && touche == false && menu_List == 0) menu_choix = 0;
+  //else
+  //if (keyCode == ENTER && menu_choix == 0 && touche == false && menu_List == 0);
+  //else
+  //if (keyCode == ENTER && menu_choix == 1 && touche == false && menu_List == 0);
+  else
+  if (keyCode == ENTER && menu_choix == 2 && touche == false && menu_List == 0) exit();
+  else
+  if (keyCode == ESC && touche == false && menu_List == 0) exit();
   touche = true;
 }
 
