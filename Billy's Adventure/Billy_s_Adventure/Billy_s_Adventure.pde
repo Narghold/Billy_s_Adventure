@@ -6,8 +6,9 @@ boolean touche = false;
 ///////////////////////
 
 void intialization(){
-  menu_initialisation();
+  menu_initialization();
   menu_choix = 0;
+  play_initialization();
 }
 
 void update(){
@@ -26,6 +27,9 @@ void draw(){
   if(menu_List == 0){
     menu_draw();
   }
+  //if(menu_List == 1){
+    //play_update();
+  //}
 }
 
 void keyPressed(){
@@ -40,8 +44,8 @@ void keyPressed(){
   if (keyCode == UP && menu_choix == 2 && touche == false && menu_List == 0)   menu_choix = 1;
   else
   if (keyCode == DOWN && menu_choix == 2 && touche == false && menu_List == 0) menu_choix = 0;
-  //else
-  //if (keyCode == ENTER && menu_choix == 0 && touche == false && menu_List == 0);
+  else
+  if (keyCode == ENTER && menu_choix == 0 && touche == false && menu_List == 0) menu_List = 1;
   //else
   //if (keyCode == ENTER && menu_choix == 1 && touche == false && menu_List == 0);
   else

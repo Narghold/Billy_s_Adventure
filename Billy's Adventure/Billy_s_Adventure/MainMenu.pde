@@ -1,4 +1,4 @@
-//////VARIABLES/////////
+ //////VARIABLES/////////
 
 //Images
 PImage background_Menu;
@@ -41,7 +41,7 @@ int menu_choix;
 
 ///////////////////////
 
-void menu_initialisation(){
+void menu_initialization(){
   background_Menu = loadImage("background.jpg");
   curseur_Menu = loadImage("menu_curseur.png");
 }
