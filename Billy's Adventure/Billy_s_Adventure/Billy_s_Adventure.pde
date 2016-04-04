@@ -12,7 +12,7 @@ void intialization(){
 }
 
 void update(){
-  menu_update();
+  if(menu_List == 0) menu_update();
 }
 
 void setup(){
@@ -27,34 +27,7 @@ void draw(){
   if(menu_List == 0){
     menu_draw();
   }
-  //if(menu_List == 1){
-    //play_update();
-  //}
-}
-
-void keyPressed(){
-  if (keyCode == UP && menu_choix == 0 && touche == false && menu_List == 0)   menu_choix = 2;  //Variable curseur // 0 = Play | 1 = Command | 2 = Quit 
-  else
-  if (keyCode == DOWN && menu_choix == 0 && touche == false && menu_List == 0) menu_choix = 1;
-  else
-  if (keyCode == UP && menu_choix == 1 && touche == false && menu_List == 0)   menu_choix = 0;
-  else
-  if (keyCode == DOWN && menu_choix == 1 && touche == false && menu_List == 0) menu_choix = 2;
-  else
-  if (keyCode == UP && menu_choix == 2 && touche == false && menu_List == 0)   menu_choix = 1;
-  else
-  if (keyCode == DOWN && menu_choix == 2 && touche == false && menu_List == 0) menu_choix = 0;
-  else
-  if (keyCode == ENTER && menu_choix == 0 && touche == false && menu_List == 0) menu_List = 1;
-  //else
-  //if (keyCode == ENTER && menu_choix == 1 && touche == false && menu_List == 0);
-  else
-  if (keyCode == ENTER && menu_choix == 2 && touche == false && menu_List == 0) exit();
-  else
-  if (keyCode == ESC && touche == false && menu_List == 0) exit();
-  touche = true;
-}
-
-void keyReleased(){
-  if(menu_List == 0) touche = false;
+  if(menu_List == 1){
+    play_draw();
+  }
 }

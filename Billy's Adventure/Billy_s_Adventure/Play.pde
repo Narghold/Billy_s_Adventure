@@ -1,6 +1,6 @@
 //////VARIABLES//////
 
-//Animations//
+//Animations
 PImage Dos1;
 PImage Dos2;
 PImage Face1;
@@ -9,12 +9,14 @@ PImage Droite1;
 PImage Droite2;
 PImage Gauche1;
 PImage Gauche2;
-int perso_x = 500;
-int perso_y = 500;
+PImage Carte;
+int map_x  = -725;
+int map_y = -1470;
 
 //Timer
 int play_lastTimer = 0;
-int play_timer = 0;
+int play_timer = 1080;
+int play_frame = 0; 
 
 //////////////////////
 
@@ -27,30 +29,20 @@ void play_initialization(){
   Droite2 = loadImage("Droite2.png");
   Gauche1 = loadImage("Gauche1.png");
   Gauche2 = loadImage("Gauche1.png");
+  Carte = loadImage("map.png");
 }
 
-/*void play_update(){
-   
-  //Animation perso//
+void play_update(){
+  
+  //Déplacement carte
+  keyPressed();
+ 
+  //Animation perso
   play_timer = millis();
   
-  if(play_timer - play_lastTimer > 1000){
-    if(keyCode == UP){
-      perso_y ++;
-      image(Dos1 , 500 , perso_y);
-    }else{
-      perso_y ++;
-      image(Dos2 , 500 , perso_y);
-    }
-  }
-  if(backgroundMenu_x < -1600+1080){
-    play_frame = 1;
-  }
-  if(backgroundMenu_x == 0){
-    play_frame = 0;
-  }
-}*/
+}
 
 void play_draw(){
-
+  background(#000000);
+  image(Carte , map_x , map_y , 5842/2 , 4930/2); //Reduction à 2921x2465
 }
