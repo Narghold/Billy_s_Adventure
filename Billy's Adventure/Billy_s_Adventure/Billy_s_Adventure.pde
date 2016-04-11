@@ -13,6 +13,7 @@ void intialization(){
 
 void update(){
   if(menu_List == 0) menu_update();
+  if(menu_List == 1) play_update();
 }
 
 void setup(){
@@ -24,10 +25,6 @@ void setup(){
 
 void draw(){
   update();
-  if(menu_List == 0){
-    menu_draw();
-  }
-  if(menu_List == 1){
-    play_draw();
-  }
+  if(menu_List == 0) menu_draw();
+  if(menu_List == 1) play_draw();
 }

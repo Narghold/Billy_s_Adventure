@@ -17,13 +17,13 @@ void keyPressed(){
   else
   if (keyCode == ENTER && menu_choix == 2 && touche == false && menu_List == 0) exit();
   else
-  if(keyCode == UP && menu_List == 1) map_y ++; //Déplacement carte //Scrolling
+  if(keyCode == UP && menu_List == 1) map_y = map_y + 3;  //Déplacement carte //Scrolling
   else
-  if(keyCode == DOWN && menu_List == 1) map_y --;
+  if(keyCode == DOWN && menu_List == 1) map_y = map_y - 3;
   else
-  if(keyCode == LEFT && menu_List == 1) map_x ++;
+  if(keyCode == LEFT && menu_List == 1) map_x = map_x + 3;
   else
-  if(keyCode == RIGHT && menu_List == 1) map_x --;
+  if(keyCode == RIGHT && menu_List == 1) map_x = map_x - 3;
   touche = true;
 }
 
