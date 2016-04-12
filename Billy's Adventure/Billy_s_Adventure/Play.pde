@@ -46,7 +46,7 @@ void play_update(){
   play_timer = millis();
   
   //Fléche HAUT
-  if(play_timer - play_lastTimer > 500){
+  if(play_timer - play_lastTimer > 400){
     if(play_frame == 0 && keyCode == UP && keyPressed){
       play_frame = 1;
       play_lastTimer = play_timer;

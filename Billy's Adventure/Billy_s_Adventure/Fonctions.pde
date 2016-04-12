@@ -12,8 +12,8 @@ void keyPressed(){
   if (keyCode == DOWN && menu_choix == 2 && touche == false && menu_List == 0) menu_choix = 0;
   else
   if (keyCode == ENTER && menu_choix == 0 && touche == false && menu_List == 0) menu_List = 1;
-  //else
-  //if (keyCode == ENTER && menu_choix == 1 && touche == false && menu_List == 0) menu_List = 2;
+  else
+  if (keyCode == ENTER && menu_choix == 1 && touche == false && menu_List == 0) menu_List = 2;
   else
   if (keyCode == ENTER && menu_choix == 2 && touche == false && menu_List == 0) exit();
   else

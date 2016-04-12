@@ -3,12 +3,16 @@
 int menu_List = 0; // 0 = Menu | 1 = Play | 2 = Commands | 3 = Quit
 boolean touche = false;
 
+//Police
+PFont Arblanca_48;
+
 ///////////////////////
 
 void intialization(){
   menu_initialization();
   menu_choix = 0;
   play_initialization();
+  command_initialisation();
 }
 
 void update(){
@@ -27,4 +31,5 @@ void draw(){
   update();
   if(menu_List == 0) menu_draw();
   if(menu_List == 1) play_draw();
+  if(menu_List == 2) command_draw();
 }

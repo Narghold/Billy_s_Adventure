@@ -77,17 +77,17 @@ void menu_draw(){
   
   //Bouton Play
   fill(255, 255, 255);
-  textSize(42);
+  textFont(Arblanca_48 , 42);
   text("Play" , menuPlay_x , menuPlay_y);
   
   //Bouton Commands
   fill(255, 255, 255);
-  textSize(42);
+  textFont(Arblanca_48 , 42);
   text("Commands" , menuCommand_x , menuCommand_y);
   
   //Bouton Quit
   fill(255, 255, 255);
-  textSize(42);
+  textFont(Arblanca_48 , 42);
   text("Quit" , menuQuit_x , menuQuit_y);
   
   //Curseur
