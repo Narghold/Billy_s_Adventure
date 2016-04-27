@@ -38,12 +38,16 @@ boolean boutonQuit = false;
 //Variable curseur // 0 = Play | 1 = Command | 2 = Quit 
 int menu_choix;
 
+//Musique
+SoundFile music_menu;
+
 ///////////////////////
 
 void menu_initialization(){
   background_Menu = loadImage("background.jpg");
   curseur_Menu = loadImage("menu_curseur.png");
   music_menu = new SoundFile(this , "musicMenu.mp3");
+  music_menu.play();
 }
 
 void menu_update(){
@@ -92,4 +96,5 @@ void menu_draw(){
   
   //Curseur
   image(curseur_Menu , menuCurseur_x , menuCurseur_y);
+  
 }

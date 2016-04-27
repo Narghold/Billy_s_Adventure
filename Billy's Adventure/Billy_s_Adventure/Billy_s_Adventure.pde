@@ -8,9 +8,6 @@ boolean touche = false;
 //Police
 PFont Arblanca_48;
 
-//Musique
-SoundFile music_menu;
-
 ///////////////////////
 
 void intialization(){
@@ -30,9 +27,6 @@ void setup(){
   smooth(0);
   stroke(0);
   intialization();
-  
-  //Musique
-  if(menu_List == 0) music_menu.play();
 }
 
 void draw(){
