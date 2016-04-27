@@ -74,6 +74,9 @@ void play_update(){
     }
   }
   
+  //Ennemis
+  
+  
 }
 
 void play_draw(){

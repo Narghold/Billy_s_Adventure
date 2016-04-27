@@ -25,7 +25,10 @@ void keyPressed(){
   else
   if(keyCode == RIGHT && menu_List == 1) map_x = map_x - 3;
   else
-  if(keyCode == ENTER && menu_List == 2) menu_List = 0;
+  if(keyCode == ENTER && menu_List == 2){
+    menu_List = 0;
+    menu_choix = 0;
+  }
   touche = true;
 }
 
