@@ -2,7 +2,7 @@ import processing.sound.*;
 
 //////VARIABLES/////////
 
-int menu_List = 0; // 0 = Menu | 1 = Play | 2 = Commands | 3 = Quit
+int menu_List = 0; // 0 = Menu | 1 = Play | 2 = Commands | 3 = Combat | 4 = Shop |
 boolean touche = false;
 
 //Police
@@ -11,9 +11,9 @@ PFont Arblanca_48;
 ///////////////////////
 
 void intialization(){
-  menu_initialization();
+  menu_initialisation();
   menu_choix = 0;
-  play_initialization();
+  play_initialisation();
   command_initialisation();
 }
 
@@ -34,4 +34,6 @@ void draw(){
   if(menu_List == 0) menu_draw();
   if(menu_List == 1) play_draw();
   if(menu_List == 2) command_draw();
+  if(menu_List == 3) combat_draw();
+  if(menu_List == 4) shop_draw();
 }

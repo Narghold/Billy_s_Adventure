@@ -25,6 +25,13 @@ void keyPressed(){
   else
   if(keyCode == RIGHT && menu_List == 1) map_x = map_x - 3;
   else
+  if(keyCode == ENTER && menu_List == 1 && map_x <= -638 && map_x > -722 && map_y < -723 && map_y > -813) menu_List = 4;
+  else
+  if(keyCode == ENTER && menu_List == 1){
+    combat_initialisation();
+    menu_List = 3;
+  }
+  else
   if(keyCode == ENTER && menu_List == 2){
     menu_List = 0;
     menu_choix = 0;

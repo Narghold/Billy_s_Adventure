@@ -43,7 +43,7 @@ SoundFile music_menu;
 
 ///////////////////////
 
-void menu_initialization(){
+void menu_initialisation(){
   background_Menu = loadImage("background.jpg");
   curseur_Menu = loadImage("menu_curseur.png");
   music_menu = new SoundFile(this , "musicMenu.mp3");

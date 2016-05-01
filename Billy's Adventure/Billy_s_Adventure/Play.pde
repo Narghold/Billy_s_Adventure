@@ -10,6 +10,7 @@ PImage Droite2;
 PImage Gauche1;
 PImage Gauche2;
 PImage Carte;
+PImage Marchand;
 int map_x  = -725;
 int map_y = -1470;
 int perso_x = 1080/2;
@@ -26,7 +27,7 @@ int play_frame = 0;
 
 //////////////////////
 
-void play_initialization(){
+void play_initialisation(){
   Dos1 = loadImage("Dos1.PNG");
   Dos2 = loadImage("Dos2.png");
   Face1 = loadImage("Face1.png");
@@ -36,6 +37,7 @@ void play_initialization(){
   Gauche1 = loadImage("Gauche1.png");
   Gauche2 = loadImage("Gauche2.png");
   Carte = loadImage("map.png");
+  Marchand = loadImage("merchant.png");
 }
 
 void play_update(){
@@ -45,7 +47,7 @@ void play_update(){
   //Animation perso
   play_timer = millis();
   
-  //Fléche HAUT
+  //Déplacement
   if(play_timer - play_lastTimer > 400){
     if(play_frame == 0 && keyCode == UP && keyPressed){
       play_frame = 1;
@@ -84,6 +86,13 @@ void play_draw(){
   //Map
   background(#000000);
   image(Carte , map_x , map_y , 5842/2 , 4930/2); //Reduction à 2921x2465
+  image(Marchand, map_x+1200, map_y+1100, 80, 104);
+  fill(255, 255, 255);
+  textFont(Arblanca_48 , 42);
+  text(map_x , menuPlay_x , menuPlay_y);
+  fill(255, 255, 255);
+  textFont(Arblanca_48 , 42);
+  text(map_y , menuCommand_x , menuCommand_y);
   
   //Personnage
   if(play_frame == 0 && keyCode == UP) image(Dos1 , perso_x , perso_y , token_x , token_y);
