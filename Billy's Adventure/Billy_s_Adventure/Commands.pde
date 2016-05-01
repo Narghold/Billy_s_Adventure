@@ -18,8 +18,6 @@ void command_initialisation(){
   Left = loadImage("left.png");
   Right = loadImage("right.png");
   
-  Arblanca_48 = loadFont("ARBLANCA-48.vlw");
-  
 }
 
 void command_draw(){
