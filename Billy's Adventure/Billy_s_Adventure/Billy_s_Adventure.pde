@@ -15,7 +15,6 @@ void intialization(){
   menu_choix = 0;
   play_initialisation();
   command_initialisation();
-  Arblanca_48 = loadFont("ARBLANCA-48.vlw");
 }
 
 void update(){

@@ -8,15 +8,14 @@ PImage Right;
 int fleche_x = 100;
 int fleche_y = 100;
 
-
-///////////////////////
-
 void command_initialisation(){
   
   Up = loadImage("up.png");
   Down = loadImage("down.png");
   Left = loadImage("left.png");
   Right = loadImage("right.png");
+  
+  Arblanca_48 = loadFont("ARBLANCA-48.vlw");
   
 }
 

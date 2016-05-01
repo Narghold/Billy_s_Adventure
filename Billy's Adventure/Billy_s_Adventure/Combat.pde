@@ -18,11 +18,15 @@ int player_HP;
 int player_MP;
 int gold;
 
+int animation = 0;
+
 void combat_draw(){
-  
+  combat_update();
+  combat_transition();
 }
 
 void combat_initialisation(){
+  combat_update();
   if(boss == true){
     ennemi_maxHP = 75;
     ennemi_maxDmg = 20;
@@ -56,16 +60,6 @@ void combat_initialisation(){
     ennemi_esquive = 3/4;
     ennemi_HP = ennemi_maxHP;
   }
-  for(int i=0;i<1081;i++){
-    stroke(0);
-    fill(0);
-    rect(0,0,i,120);
-    rect(0,240,i,120);
-    rect(0,480,i,120);
-    rect(1080,120,-i,120);
-    rect(1080,360,-i,120);
-    rect(1080,600,-i,120);
-  }
 }
 
 
@@ -85,45 +79,56 @@ Mage
 Boss
 125 HP
 10-20 Dmg
+
+Player
+50 HP
+25 MP
+10-18 Dmg
+18-25 MP_Dmg
+Fuite 1/2
+
+Objets
+Epée de héro -> 18-25 Dmg          150 Or
+Bouclier d'or -> +25 HP            100 Or
+Armure céleste -> +25 HP           200 Or
+Bague de Foudre -> 25-35 MP_Dmg    250 Or
+Crystal de Mana -> +15 MP          150 Or
+
+Loot
+15-35 Or
+
 */
 
 
 
 //Timer
-int play_lastTimer = 0;
-int play_timer = 0;
-int play_frame = 0; 
+int combat_lastTimer = 0;
+int combat_timer = 0;
+int combat_frame = 0; 
 
-void play_update(){
- 
-  //Animation perso
-  play_timer = millis();
-  
-  //Déplacement
-  if(play_timer - play_lastTimer > 400){
-    if(play_frame == 0 && keyCode == UP && keyPressed){
-      play_frame = 1;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 1 && keyCode == UP && keyPressed){
-      play_frame = 0;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 0 && keyCode == DOWN && keyPressed){
-      play_frame = 1;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 1 && keyCode == DOWN && keyPressed){
-      play_frame = 0;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 0 && keyCode == LEFT && keyPressed){
-      play_frame = 1;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 1 && keyCode == LEFT && keyPressed){
-      play_frame = 0;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 0 && keyCode == RIGHT && keyPressed){
-      play_frame = 1;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 1 && keyCode == RIGHT && keyPressed){
-      play_frame = 0;
-      play_lastTimer = play_timer;
+void combat_update(){
+  combat_timer = millis();
+  if(combat_timer - combat_lastTimer > 100){
+    if(combat_frame == 0){
+      combat_frame = 1;
+      combat_lastTimer = combat_timer;
+    }
+    else 
+    if(combat_frame == 1){
+      combat_frame = 0;
+      combat_lastTimer = combat_timer;
     }
   }
+}
+
+
+void combat_transition(){
+    stroke(0);
+    fill(0);
+    if(combat_frame == 1 && animation == 0){ rect(0,0,1080,120); animation = 1;}
+    if(combat_frame == 0 && animation == 2){ rect(0,120,1080,120); animation = 3;}
+    if(combat_frame == 1 && animation == 4){ rect(0,240,1080,120); animation = 5;}
+    if(combat_frame == 0 && animation == 5){ rect(0,360,1080,120); animation = 6;}  
+    if(combat_frame == 1 && animation == 3){ rect(0,480,1080,120); animation = 4;}
+    if(combat_frame == 0 && animation == 1){ rect(0,600,1080,120); animation = 2;}
+}
