@@ -10,25 +10,37 @@ float ennemi_esquive;
 int ennemi_HP;
 int ennemi_MP;
 
-int player_maxHP;
-int player_maxMP;
-int player_maxDmg;
-int player_minDmg;
-int player_HP;
-int player_MP;
-int gold;
+int player_maxHP = 50;
+int player_maxMP = 25;
+int player_maxDmg = 18;
+int player_minDmg = 10;
+int player_minDmgM = 18;
+int player_maxDmgM = 25;
+int player_HP = 50;
+int player_MP = 25;
+int gold = 0;
 
 int animation = 0;
 
+PImage combat_background;
+
+////////////////////////////
+
 void combat_draw(){
+  
   combat_update();
   combat_transition();
+  //println(mouseX);
+  //print("  " + mouseY);
+  
+  
+  
 }
 
 void combat_initialisation(){
   combat_update();
   if(boss == true){
-    ennemi_maxHP = 75;
+    ennemi_maxHP = 125;
     ennemi_maxDmg = 20;
     ennemi_minDmg = 10;
     ennemi_esquive = 1/2;
@@ -60,6 +72,12 @@ void combat_initialisation(){
     ennemi_esquive = 3/4;
     ennemi_HP = ennemi_maxHP;
   }
+  combat_background = loadImage("Battle_Background.jpg");
+  //combat_box1 = 
+  //combat_box2 = 
+  //player =
+   
+ 
 }
 
 
@@ -75,17 +93,6 @@ Orc
 Mage
 25 HP
 12-16 Dmg
-
-Boss
-125 HP
-10-20 Dmg
-
-Player
-50 HP
-25 MP
-10-18 Dmg
-18-25 MP_Dmg
-Fuite 1/2
 
 Objets
 Epée de héro -> 18-25 Dmg          150 Or
@@ -106,6 +113,8 @@ int combat_lastTimer = 0;
 int combat_timer = 0;
 int combat_frame = 0; 
 
+///////////////////////////
+
 void combat_update(){
   combat_timer = millis();
   if(combat_timer - combat_lastTimer > 100){
@@ -122,6 +131,7 @@ void combat_update(){
 }
 
 
+
 void combat_transition(){
     stroke(0);
     fill(0);
@@ -131,4 +141,5 @@ void combat_transition(){
     if(combat_frame == 0 && animation == 5){ rect(0,360,1080,120); animation = 6;}  
     if(combat_frame == 1 && animation == 3){ rect(0,480,1080,120); animation = 4;}
     if(combat_frame == 0 && animation == 1){ rect(0,600,1080,120); animation = 2;}
+    if(animation == 6)image(combat_background, 0, 0);
 }
