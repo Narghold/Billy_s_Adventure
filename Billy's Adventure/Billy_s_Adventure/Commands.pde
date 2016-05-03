@@ -16,6 +16,7 @@ void command_initialisation(){
   Right = loadImage("right.png");
   
   Arblanca_48 = loadFont("ARBLANCA-48.vlw");
+  GillSansMT_48 = loadFont("GillSansMT-48.vlw");
   
 }
 

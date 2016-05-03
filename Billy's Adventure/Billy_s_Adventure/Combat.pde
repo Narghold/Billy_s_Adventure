@@ -1,4 +1,5 @@
-//////Variables//////
+//////VARIABLES/////////
+
 boolean boss = false;
 int ennemi;
 
@@ -23,6 +24,10 @@ int gold = 0;
 int animation = 0;
 
 PImage combat_background;
+PImage combat_box1;
+PImage combat_box2;
+PImage combat_player;
+PImage combat_ennemi;
 
 ////////////////////////////
 
@@ -30,8 +35,8 @@ void combat_draw(){
   
   combat_update();
   combat_transition();
-  //println(mouseX);
-  //print("  " + mouseY);
+  print(mouseX);
+  println("///" + mouseY);
   
   
   
@@ -45,16 +50,18 @@ void combat_initialisation(){
     ennemi_minDmg = 10;
     ennemi_esquive = 1/2;
     ennemi_HP = ennemi_maxHP;
+    combat_ennemi =  loadImage("boss.png");
   }
   else
   ennemi = int(random(1,3.99));
   
-  if(ennemi == 1){                    //| 1 = Knight | 2 = Orc | 3 = Mage |
+  if(ennemi == 1){                    //| 1 = Orc | 2 = Knight | 3 = Mage |
     ennemi_maxHP = 75;
     ennemi_maxDmg = 8;
     ennemi_minDmg = 4;
     ennemi_esquive = 1/3;
     ennemi_HP = ennemi_maxHP;
+    combat_ennemi =  loadImage("orc.png");
   }
   else
   if(ennemi == 2){
@@ -63,30 +70,30 @@ void combat_initialisation(){
     ennemi_minDmg = 8;
     ennemi_esquive = 1/2;
     ennemi_HP = ennemi_maxHP;
+    combat_ennemi =  loadImage("knight.png");
   }
   else
   if(ennemi == 3){
-    ennemi_maxHP = 75;
+    ennemi_maxHP = 25;
     ennemi_maxDmg = 16;
     ennemi_minDmg = 12;
     ennemi_esquive = 3/4;
     ennemi_HP = ennemi_maxHP;
+    combat_ennemi =  loadImage("mage.png");
   }
   combat_background = loadImage("Battle_Background.jpg");
-  //combat_box1 = 
-  //combat_box2 = 
-  //player =
-   
- 
+  combat_box1 = loadImage("box.png");
+  combat_box2 = loadImage("box.png");
+  combat_player = loadImage("perso_epee.png");
 }
 
 
 /*
-Knight
+Orc
 75 HP
 4-8 Dmg
 
-Orc
+Knight
 50 HP
 8-12 Dmg
 
@@ -142,4 +149,21 @@ void combat_transition(){
     if(combat_frame == 1 && animation == 3){ rect(0,480,1080,120); animation = 4;}
     if(combat_frame == 0 && animation == 1){ rect(0,600,1080,120); animation = 2;}
     if(animation == 6)image(combat_background, 0, 0);
+    if(animation == 6)image(combat_ennemi, 800, 150, 210, 190);
+    if(animation == 6)image(combat_player, 75,150);
+    if(animation == 6)image(combat_box1, 50, 30);
+    if(animation == 6)image(combat_box2, 850, 30);
+    if(animation == 6){
+      fill(255, 20, 20);
+      textFont(GillSansMT_48 , 42);
+      text("/"+player_maxHP , 160, 70);
+      text("/"+ennemi_maxHP , 960, 70);
+      fill(0);
+      text(player_HP , 105, 70);
+      text(ennemi_HP , 905, 70);
+      text(player_MP , 120, 110);
+      text("////////", 920, 110);
+      fill(20,20,255);
+      text("/"+player_maxMP , 160, 110);      
+    }
 }

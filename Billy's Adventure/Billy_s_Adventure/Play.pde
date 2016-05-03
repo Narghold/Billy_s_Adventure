@@ -1,4 +1,5 @@
-//////VARIABLES//////
+//////VARIABLES/////////
+int or = 1000;
 
 //Animations
 PImage Dos1;
@@ -11,10 +12,11 @@ PImage Gauche1;
 PImage Gauche2;
 PImage Carte;
 PImage Marchand;
+PImage boss_token;
 int map_x  = -725;
 int map_y = -1470;
-int perso_x = 1080/2;
-int perso_y = 720/2;
+int perso_x = 516;
+int perso_y = 328;
 
 //Redimentionnement Images
 int token_x = 48;
@@ -38,6 +40,7 @@ void play_initialisation(){
   Gauche2 = loadImage("Gauche2.png");
   Carte = loadImage("map.png");
   Marchand = loadImage("merchant.png");
+  boss_token = loadImage("boss.png");
 }
 
 void play_update(){
@@ -87,6 +90,7 @@ void play_draw(){
   background(#000000);
   image(Carte , map_x , map_y , 5842/2 , 4930/2); //Reduction à 2921x2465
   image(Marchand, map_x+1200, map_y+1100, 80, 104);
+  image(boss_token, map_x+2000, map_y+450, 100, 125);
   fill(255, 255, 255);
   textFont(Arblanca_48 , 42);
   text(map_x , menuPlay_x , menuPlay_y);
