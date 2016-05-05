@@ -20,6 +20,7 @@ int player_maxDmgM = 25;
 int player_HP = 50;
 int player_MP = 25;
 int gold = 0;
+float player_fuite = 0.5;
 
 int animation = 0;
 
@@ -29,6 +30,18 @@ PImage combat_box2;
 PImage combat_player;
 PImage combat_ennemi;
 
+int combat_choix = 1;
+
+float fuite;
+float ennemi_choix = 0;
+float Eesquive;
+int Eattaque;
+boolean attaque;
+int player_dmg;
+int ennemi_dmg;
+boolean esquive;
+boolean playerMattaque;
+
 ////////////////////////////
 
 void combat_draw(){
@@ -37,6 +50,8 @@ void combat_draw(){
   combat_transition();
   print(mouseX);
   println("///" + mouseY);
+  println(boss);
+  combat_stats();
   
   
   
@@ -45,10 +60,11 @@ void combat_draw(){
 void combat_initialisation(){
   combat_update();
   if(boss == true){
+    ennemi = 0;
     ennemi_maxHP = 125;
     ennemi_maxDmg = 20;
     ennemi_minDmg = 10;
-    ennemi_esquive = 1/2;
+    ennemi_esquive = 0.5;
     ennemi_HP = ennemi_maxHP;
     combat_ennemi =  loadImage("boss.png");
   }
@@ -59,7 +75,7 @@ void combat_initialisation(){
     ennemi_maxHP = 75;
     ennemi_maxDmg = 8;
     ennemi_minDmg = 4;
-    ennemi_esquive = 1/3;
+    ennemi_esquive = 0.33;
     ennemi_HP = ennemi_maxHP;
     combat_ennemi =  loadImage("orc.png");
   }
@@ -68,7 +84,7 @@ void combat_initialisation(){
     ennemi_maxHP = 50;
     ennemi_maxDmg = 12;
     ennemi_minDmg = 8;
-    ennemi_esquive = 1/2;
+    ennemi_esquive = 0.5;
     ennemi_HP = ennemi_maxHP;
     combat_ennemi =  loadImage("knight.png");
   }
@@ -77,7 +93,7 @@ void combat_initialisation(){
     ennemi_maxHP = 25;
     ennemi_maxDmg = 16;
     ennemi_minDmg = 12;
-    ennemi_esquive = 3/4;
+    ennemi_esquive = 0.66;
     ennemi_HP = ennemi_maxHP;
     combat_ennemi =  loadImage("mage.png");
   }
@@ -86,34 +102,6 @@ void combat_initialisation(){
   combat_box2 = loadImage("box.png");
   combat_player = loadImage("perso_epee.png");
 }
-
-
-/*
-Orc
-75 HP
-4-8 Dmg
-
-Knight
-50 HP
-8-12 Dmg
-
-Mage
-25 HP
-12-16 Dmg
-
-Objets
-Epée de héro -> 18-25 Dmg          150 Or
-Bouclier d'or -> +25 HP            100 Or
-Armure céleste -> +25 HP           200 Or
-Bague de Foudre -> 25-35 MP_Dmg    250 Or
-Crystal de Mana -> +15 MP          150 Or
-
-Loot
-15-35 Or
-
-*/
-
-
 
 //Timer
 int combat_lastTimer = 0;
@@ -140,6 +128,7 @@ void combat_update(){
 
 
 void combat_transition(){
+    if(animation == 6) background(0);
     stroke(0);
     fill(0);
     if(combat_frame == 1 && animation == 0){ rect(0,0,1080,120); animation = 1;}
@@ -165,5 +154,70 @@ void combat_transition(){
       text("////////", 920, 110);
       fill(20,20,255);
       text("/"+player_maxMP , 160, 110);      
-    }
+      fill(255);
+      textFont(Arblanca_48 , 42);
+      text("Attaque" , 150 , 480);
+      text("Attaque Magique" , 150 , 550 );
+      text("Fuite" ,  150, 620);
+   } 
+}
+
+void combat_stats(){
+  if(combat_choix==1 && animation == 6)image(curseur_Menu , 100 , 460);
+  if(combat_choix==2 && animation == 6)image(curseur_Menu , 100 , 530);
+  if(combat_choix==3 && animation == 6)image(curseur_Menu , 100 , 600);
+  if(attaque == false){
+    
+  }
+    
+
+}
+
+
+void player_fuite(){
+  fuite = random(0,1);
+  if(fuite<player_fuite){
+    menu_List = 1;
+    animation = 0;
+  }
+}
+
+void ennemi_esquive(){
+  Eesquive = random(0,1);
+  if(Eesquive<ennemi_esquive){
+    player_dmg = 0;
+    esquive = true;
+  }
+  else esquive = false;
+}
+
+void ennemi_attaque(){
+  Eattaque = int(random(ennemi_minDmg,ennemi_maxDmg+1));
+}
+
+void combat_tour(){
+  if(boss == true){
+    ennemi_choix= random(0,1);
+    if(ennemi_choix<0.33){attaque = false; ennemi_esquive();}
+    else {attaque = true; ennemi_attaque();}
+  }
+  if(ennemi == 1){
+    ennemi_choix= random(0,1);
+    if(ennemi_choix<0.25){attaque = false; ennemi_esquive();}
+    else {attaque = true; ennemi_attaque();}
+  }
+  if(ennemi == 2){
+    ennemi_choix= random(0,1);
+    if(ennemi_choix<0.33){attaque = false; ennemi_esquive();}
+    else {attaque = true; ennemi_attaque();}
+  }
+  if(ennemi == 3){
+    ennemi_choix= random(0,1);
+    if(ennemi_choix<0.5){attaque = false; ennemi_esquive();}
+    else {attaque = true; ennemi_attaque();}
+  }
+  if(playerMattaque == true){
+    player_dmg = int(random(player_minDmgM, player_maxDmgM + 1));
+  }
+  
 }

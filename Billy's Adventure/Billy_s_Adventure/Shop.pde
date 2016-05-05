@@ -11,33 +11,29 @@ boolean bouclier = false;
 boolean cristal = false;
 boolean epee = false;
 
-int shop_choix=2;
+int shop_choix=1;
 
 //////////////////////
 
 void shop_draw(){
-  shop_initialisation();
   shop_update();
-  fill(0);
-  textFont(Arblanca_48 , 30);
-  text("Press TAB to return play" , 700 , 700);
 }
 
 void shop_initialisation(){
-  background(0);
   shop_armure = loadImage("shop_armure.png");
   shop_bague = loadImage("shop_bague.png");
   shop_bouclier = loadImage("shop_bouclier.png");
   shop_cristal = loadImage("shop_cristal.png");
   shop_epee = loadImage("shop_epee.png");
+    
+}
+
+void shop_update(){
+  background(0);
   fill(255, 215, 0);
   textFont(Arblanca_48 , 42);
   text("OR:" , 850 , 50);
   text(or, 910, 50);
-  
-}
-
-void shop_update(){
   if(shop_choix == 1)image(curseur_Menu , 50 , 100);
   else
   if(shop_choix == 2)image(curseur_Menu , 50 , 230);
@@ -107,4 +103,8 @@ void shop_update(){
     textFont(Arblanca_48 , 42);
     text("Déjà Acheté" , 100 , 650);
   }
+  fill(255);
+  textFont(Arblanca_48 , 30);
+  text("TAB pour retourner au jeu" , 700 , 680);
+  text("CTRL pour se soigner: 50 Or" , 700 , 710);
 }

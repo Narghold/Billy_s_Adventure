@@ -3,6 +3,7 @@
 //Images
 PImage background_Menu;
 PImage curseur_Menu;
+PImage titre;
 
 //Coordonnées Background
 int backgroundMenu_x = 0;
@@ -47,6 +48,7 @@ void menu_initialisation(){
   background_Menu = loadImage("background.jpg");
   curseur_Menu = loadImage("menu_curseur.png");
   music_menu = new SoundFile(this , "musicMenu.mp3");
+  titre = loadImage("titre.png");
 }
 
 void menu_update(){
@@ -95,5 +97,8 @@ void menu_draw(){
   
   //Curseur
   image(curseur_Menu , menuCurseur_x , menuCurseur_y);
+  
+  // Titre
+  image(titre , 0,0);
   
 }
