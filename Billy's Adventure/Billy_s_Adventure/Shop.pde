@@ -18,6 +18,9 @@ int shop_choix=2;
 void shop_draw(){
   shop_initialisation();
   shop_update();
+  fill(0);
+  textFont(Arblanca_48 , 30);
+  text("Press TAB to return play" , 700 , 700);
 }
 
 void shop_initialisation(){

@@ -9,6 +9,11 @@ boolean touche = false;
 PFont Arblanca_48;
 PFont GillSansMT_48;
 
+//Musique Timer
+int music_timer = 0;
+int music_lastTimer = 0;
+
+
 ///////////////////////
 
 void intialization(){
@@ -28,6 +33,7 @@ void setup(){
   smooth(0);
   stroke(0);
   intialization();
+  music_menu.loop();
 }
 
 void draw(){
@@ -37,4 +43,10 @@ void draw(){
   if(menu_List == 2) command_draw();
   if(menu_List == 3) combat_draw();
   if(menu_List == 4) shop_draw();
+  //Musique en boucle
+  music_timer = millis();
+  if(music_timer - music_lastTimer > 134000){
+    music_menu.play();
+    music_lastTimer = music_timer;
+  }
 }
