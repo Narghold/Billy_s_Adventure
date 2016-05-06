@@ -22,10 +22,14 @@ int perso_y = 328;
 int token_x = 48;
 int token_y = 64;
 
-//Timer
+//Timer marche
 int play_lastTimer = 0;
 int play_timer = 0;
-int play_frame = 0; 
+int play_frame = 0;
+
+//Timer course
+int play_lastTimerC = 0;
+int play_timerC = 0;
 
 //////////////////////
 
@@ -46,42 +50,39 @@ void play_initialisation(){
 void play_update(){
   
   //Déplacement carte grâce à la fonction keyPressed tjrs activé
- 
-  //Animation perso
-  play_timer = millis();
   
-  //Déplacement
-  if(play_timer - play_lastTimer > 400){
-    if(play_frame == 0 && keyCode == UP && keyPressed){
-      play_frame = 1;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 1 && keyCode == UP && keyPressed){
-      play_frame = 0;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 0 && keyCode == DOWN && keyPressed){
-      play_frame = 1;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 1 && keyCode == DOWN && keyPressed){
-      play_frame = 0;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 0 && keyCode == LEFT && keyPressed){
-      play_frame = 1;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 1 && keyCode == LEFT && keyPressed){
-      play_frame = 0;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 0 && keyCode == RIGHT && keyPressed){
-      play_frame = 1;
-      play_lastTimer = play_timer;
-    }else if(play_frame == 1 && keyCode == RIGHT && keyPressed){
-      play_frame = 0;
-      play_lastTimer = play_timer;
+  //Animation perso marche normale
+  if(keyCode == UP && keyPressed || keyCode == LEFT && keyPressed || keyCode == RIGHT && keyPressed || keyCode == DOWN && keyPressed){
+    play_timer = millis();
+  
+    if(play_timer - play_lastTimer > 400){
+      if(play_frame == 0 && keyCode == UP && keyPressed){
+        play_frame = 1;
+        play_lastTimer = play_timer;
+      }else if(play_frame == 1 && keyCode == UP && keyPressed){
+        play_frame = 0;
+        play_lastTimer = play_timer;
+      }else if(play_frame == 0 && keyCode == DOWN && keyPressed){
+        play_frame = 1;
+        play_lastTimer = play_timer;
+      }else if(play_frame == 1 && keyCode == DOWN && keyPressed){
+        play_frame = 0;
+        play_lastTimer = play_timer;
+      }else if(play_frame == 0 && keyCode == LEFT && keyPressed){
+        play_frame = 1;
+        play_lastTimer = play_timer;
+      }else if(play_frame == 1 && keyCode == LEFT && keyPressed){
+        play_frame = 0;
+        play_lastTimer = play_timer;
+      }else if(play_frame == 0 && keyCode == RIGHT && keyPressed){
+        play_frame = 1;
+        play_lastTimer = play_timer;
+      }else if(play_frame == 1 && keyCode == RIGHT && keyPressed){
+        play_frame = 0;
+        play_lastTimer = play_timer;
+      }
     }
   }
-  
-  //Ennemis
-  
-  
 }
 
 void play_draw(){
@@ -91,28 +92,22 @@ void play_draw(){
   image(Carte , map_x , map_y , 5842/2 , 4930/2); //Reduction à 2921x2465
   image(Marchand, map_x+1200, map_y+1100, 80, 104);
   image(boss_token, map_x+2000, map_y+450, 100, 125);
-  fill(255, 255, 255);
-  textFont(Arblanca_48 , 42);
-  text(map_x , menuPlay_x , menuPlay_y);
-  fill(255, 255, 255);
-  textFont(Arblanca_48 , 42);
-  text(map_y , menuCommand_x , menuCommand_y);
   
   //Personnage
-  if(play_frame == 0 && keyCode == UP) image(Dos1 , perso_x , perso_y , token_x , token_y);
+  if(play_frame == 0 && keyCode == UP || play_frame == 0 && keyCode == UP && keyCode == SHIFT) image(Dos1 , perso_x , perso_y , token_x , token_y);
   else
-  if(play_frame == 1 && keyCode == UP) image(Dos2 , perso_x , perso_y , token_x , token_y);
+  if(play_frame == 1 && keyCode == UP || play_frame == 0 && keyCode == UP && keyCode == SHIFT) image(Dos2 , perso_x , perso_y , token_x , token_y);
   else
-  if(play_frame == 0 && keyCode == DOWN) image(Face1 , perso_x , perso_y , token_x , token_y);
+  if(play_frame == 0 && keyCode == DOWN || play_frame == 0 && keyCode == DOWN && keyCode == SHIFT) image(Face1 , perso_x , perso_y , token_x , token_y);
   else
-  if(play_frame == 1 && keyCode == DOWN) image(Face2 , perso_x , perso_y , token_x , token_y);
+  if(play_frame == 1 && keyCode == DOWN || play_frame == 0 && keyCode == DOWN && keyCode == SHIFT) image(Face2 , perso_x , perso_y , token_x , token_y);
   else
-  if(play_frame == 0 && keyCode == LEFT) image(Gauche1 , perso_x , perso_y , token_x , token_y);
+  if(play_frame == 0 && keyCode == LEFT || play_frame == 0 && keyCode == LEFT && keyCode == SHIFT) image(Gauche1 , perso_x , perso_y , token_x , token_y);
   else
-  if(play_frame == 1 && keyCode == LEFT) image(Gauche2 , perso_x , perso_y , token_x , token_y);
+  if(play_frame == 1 && keyCode == LEFT || play_frame == 0 && keyCode == LEFT && keyCode == SHIFT) image(Gauche2 , perso_x , perso_y , token_x , token_y);
   else
-  if(play_frame == 0 && keyCode == RIGHT) image(Droite1 , perso_x , perso_y , token_x , token_y);
+  if(play_frame == 0 && keyCode == RIGHT || play_frame == 0 && keyCode == RIGHT && keyCode == SHIFT) image(Droite1 , perso_x , perso_y , token_x , token_y);
   else
-  if(play_frame == 1 && keyCode == RIGHT) image(Droite2 , perso_x , perso_y , token_x , token_y);
+  if(play_frame == 1 && keyCode == RIGHT || play_frame == 0 && keyCode == RIGHT && keyCode == SHIFT) image(Droite2 , perso_x , perso_y , token_x , token_y);
   else image(Face1 , perso_x , perso_y , token_x , token_y);
 }

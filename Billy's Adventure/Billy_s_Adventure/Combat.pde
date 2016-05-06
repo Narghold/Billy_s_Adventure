@@ -171,8 +171,6 @@ void combat_stats(){
   if(attaque == false){
     player_dmg = 0;
   }
-    
-
 }
 
 
