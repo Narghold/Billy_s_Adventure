@@ -44,6 +44,7 @@ void draw(){
   if(menu_List == 2) command_draw();
   if(menu_List == 3) combat_draw();
   if(menu_List == 4) shop_draw();
+  
   //Musique en boucle
   music_timer = millis();
   if(music_timer - music_lastTimer > 134000){
