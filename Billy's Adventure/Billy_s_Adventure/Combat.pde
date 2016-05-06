@@ -40,7 +40,9 @@ boolean attaque;
 int player_dmg;
 int ennemi_dmg;
 boolean esquive;
-boolean playerMattaque;
+boolean player_Mattaque;
+boolean player_attaque;
+boolean ennemi_priority;
 
 ////////////////////////////
 
@@ -167,7 +169,7 @@ void combat_stats(){
   if(combat_choix==2 && animation == 6)image(curseur_Menu , 100 , 530);
   if(combat_choix==3 && animation == 6)image(curseur_Menu , 100 , 600);
   if(attaque == false){
-    
+    player_dmg = 0;
   }
     
 
@@ -187,6 +189,7 @@ void ennemi_esquive(){
   if(Eesquive<ennemi_esquive){
     player_dmg = 0;
     esquive = true;
+    ennemi_priority = true;
   }
   else esquive = false;
 }
@@ -199,25 +202,31 @@ void combat_tour(){
   if(boss == true){
     ennemi_choix= random(0,1);
     if(ennemi_choix<0.33){attaque = false; ennemi_esquive();}
-    else {attaque = true; ennemi_attaque();}
+    else {ennemi_attaque(); attaque = true;}
   }
   if(ennemi == 1){
     ennemi_choix= random(0,1);
     if(ennemi_choix<0.25){attaque = false; ennemi_esquive();}
-    else {attaque = true; ennemi_attaque();}
+    else {ennemi_attaque(); attaque = true;}
   }
   if(ennemi == 2){
     ennemi_choix= random(0,1);
     if(ennemi_choix<0.33){attaque = false; ennemi_esquive();}
-    else {attaque = true; ennemi_attaque();}
+    else {ennemi_attaque(); attaque = true;}
   }
   if(ennemi == 3){
     ennemi_choix= random(0,1);
     if(ennemi_choix<0.5){attaque = false; ennemi_esquive();}
-    else {attaque = true; ennemi_attaque();}
+    else {ennemi_attaque(); attaque = true;}
   }
-  if(playerMattaque == true){
+  if(player_Mattaque == true){
     player_dmg = int(random(player_minDmgM, player_maxDmgM + 1));
   }
-  
+  else
+  if(player_attaque == true){
+        player_dmg = int(random(player_minDmg, player_maxDmg + 1));
+  }
+  if(ennemi_priority == true){
+    
+  }
 }
