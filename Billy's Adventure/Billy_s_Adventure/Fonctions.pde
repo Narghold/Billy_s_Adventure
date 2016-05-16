@@ -16,7 +16,6 @@ void keyPressed(){
   if (keyCode == ENTER && menu_choix == 1 && touche == false && menu_List == 0) menu_List = 2;
   else
   if (keyCode == ENTER && menu_choix == 2 && touche == false && menu_List == 0) exit();
-  
   else
   if(keyCode == UP && menu_List == 1) map_y = map_y + 3;  //Déplacement carte //Scrolling
   else
@@ -25,7 +24,6 @@ void keyPressed(){
   if(keyCode == LEFT && menu_List == 1) map_x = map_x + 3;
   else
   if(keyCode == RIGHT && menu_List == 1) map_x = map_x - 3;
-  
   else
   if(keyCode == ENTER && menu_List == 1 && map_x <= -650 && map_x > -765 && map_y < -735 && map_y > -865){shop_initialisation(); menu_List = 4;}
   else

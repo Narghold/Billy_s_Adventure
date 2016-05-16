@@ -2,25 +2,26 @@
 
 boolean boss = false;
 int ennemi;
+                      ///////POUR L'ENNEMI///////
+int ennemi_maxHP;            //Total de HP
+int ennemi_maxMP;            //Total de MP
+int ennemi_maxDmg;           //Borne haute de l'interval de dégats
+int ennemi_minDmg;           //Borne basse de l'interval de dégats
+float ennemi_esquive;        //Probalité de réussite d'esquiver l'attaque du joueur
+int ennemi_HP;               //Nombre de HP en cours pouvant varier
+int ennemi_MP;               //Nombre de MP en cours pouvant varier
 
-int ennemi_maxHP;
-int ennemi_maxMP;
-int ennemi_maxDmg;
-int ennemi_minDmg;
-float ennemi_esquive;
-int ennemi_HP;
-int ennemi_MP;
-
-int player_maxHP = 50;
-int player_maxMP = 25;
-int player_maxDmg = 18;
-int player_minDmg = 10;
-int player_minDmgM = 18;
-int player_maxDmgM = 25;
-int player_HP = 50;
-int player_MP = 25;
-int gold = 0;
-float player_fuite = 0.5;
+                    ///////POUR LE JOUEUR///////
+int player_maxHP = 50;       //Total de HP
+int player_maxMP = 25;       //Total de MP
+int player_maxDmg = 18;      //Borne haute de l'interval de dégats
+int player_minDmg = 10;      //Borne basse de l'interval de dégats
+int player_minDmgM = 18;     //Borne haute de l'interval de dégats magiques
+int player_maxDmgM = 25;     //Borne basse de l'interval de dégats magiques
+int player_HP = 50;          //Nombre de HP en cours pouvant varier
+int player_MP = 25;          //Nombre de MP en cours pouvant varier
+int gold = 0;                //Quantité d'or
+float player_fuite = 0.5;    //Probabilité de réussite pour fuir le combat
 
 int animation = 0;
 
@@ -114,7 +115,7 @@ int combat_frame = 0;
 
 void combat_update(){
   combat_timer = millis();
-  if(combat_timer - combat_lastTimer > 100){
+  if(combat_timer - combat_lastTimer > 200){
     if(combat_frame == 0){
       combat_frame = 1;
       combat_lastTimer = combat_timer;
@@ -171,6 +172,8 @@ void combat_stats(){
   if(attaque == false){
     player_dmg = 0;
   }
+    
+
 }
 
 
