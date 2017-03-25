@@ -1,4 +1,4 @@
- //////VARIABLES/////////
+//////VARIABLES/////////
 
 //Images
 PImage background_Menu;

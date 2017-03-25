@@ -1,4 +1,5 @@
 //////VARIABLES/////////
+
 int or = 1000;
 
 //Animations
@@ -42,7 +43,7 @@ void play_initialisation(){
   Droite2 = loadImage("Droite2.png");
   Gauche1 = loadImage("Gauche1.png");
   Gauche2 = loadImage("Gauche2.png");
-  Carte = loadImage("map.png");
+  Carte = loadImage("map_ent.jpg");
   Marchand = loadImage("merchant.png");
   boss_token = loadImage("boss.png");
 }
@@ -96,7 +97,7 @@ void play_draw(){
   
   //Map
   background(#000000);
-  image(Carte , map_x , map_y , 5842/2 , 4930/2); //Reduction à 2921x2465
+  image(Carte , map_x , map_y); //Reduction à 2921x2465
   image(Marchand, map_x+1200, map_y+1100, 80, 104);
   image(boss_token, map_x+2000, map_y+450, 100, 125);
   
