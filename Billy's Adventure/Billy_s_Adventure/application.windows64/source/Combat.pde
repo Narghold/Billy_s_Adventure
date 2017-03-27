@@ -78,7 +78,7 @@ void combat_initialisation(){
     combat_ennemi =  loadImage("boss.png");
   }
   else
-  ennemi = int(random(1,9)); //| 1 = Pikachu | 2 = Mario Bros | 3 = Batman | 4 = Thor | 5 = Gandhalf | 6 = Link | 7 = Saitama | 8 = Goku | 9 = Vegeto 
+  ennemi = int(random(1,7)); //| 1 = Pikachu | 2 = Mario Bros | 3 = Batman | 4 = Thor | 5 = Gandhalf | 6 = Link | 7 = Saitama | 8 = Goku | 9 = Vegeto 
   
   if(ennemi == 1){
     ennemi_maxHP = 35;
